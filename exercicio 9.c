@@ -1,26 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int main (){
 
-    int numero;
-    int a[100] = {0};
+int soma_quadrados(int n){
+    int aux;
+    int s;
+
+    aux = n;
+
+    s = 0;
+    while(aux>0){
+        s = s+(aux%10)*(aux%10);
+        aux /= 10;
+    }
+    return s;
+}
+
+
+int main(){
+    int num;
     int soma;
 
-    printf("digite um numero: ");
-    scanf("%d", &numero);
+    printf("Digite um numero inteiro\n");
+    scanf("%d", &num);
 
-    while(numero != 1 && !a[numero]){
-        a[numero] = 1;
-        soma = 0;
+    soma = num;
 
-        for(int n = numero; n > 0; n /= 10){
-            int digito = n % 10;
-            soma += digito * digito;
-        }
-        numero = soma;
+    while(soma>10){
+        printf("%d\n",soma);
+        soma = soma_quadrados(soma);
     }
-        printf("%d %s numero feliz.\n", numero, numero == 1 ? "eh" : "nao eh");
 
-return 0;
+
+    if(soma ==1){
+
+        printf("Seu numero eh feliz");
+
+    }
+    else{
+
+        printf("Su numero nao eh feliz");
+    }
+
+    return 0;
 }
